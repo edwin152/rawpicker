@@ -1,0 +1,61 @@
+"Open..." = "打开...";
+"Close Project" = "关闭项目";
+"Viewer" = "查看器";
+"Previous" = "上一张";
+"Next" = "下一张";
+"Set 5 Stars / Reset Rating" = "设为 5 星 / 重置评分";
+"Fit / 100%" = "适应窗口 / 100%";
+"Zoom In" = "放大";
+"Zoom Out" = "缩小";
+"Toggle EXIF" = "显示/隐藏 EXIF";
+"Export" = "导出";
+"Export favorites" = "导出收藏";
+"Copy favorites" = "复制收藏";
+"Move favorites" = "移动收藏";
+"Cancel" = "取消";
+"Choose how to export all 5-star photos and their XMP sidecars." = "选择复制或移动所有 5 星照片及其 XMP 附属文件。";
+
+"Open RAW files or a folder" = "打开 RAW 文件或文件夹";
+"Open" = "打开";
+"Drop RAW files or folders" = "拖放 RAW 文件或文件夹";
+"Set 5 stars / reset rating" = "设为 5 星 / 重置评分";
+"Show 5-star photos only" = "仅显示 5 星照片";
+
+"intro.title" = "欢迎使用 Raw Picker";
+"intro.subtitle" = "开始筛选 RAW 照片前，先快速了解主要功能。";
+"intro.feature.open.title" = "打开或拖放文件";
+"intro.feature.open.body" = "打开文件夹，或把 RAW 文件拖进窗口即可开始。";
+"intro.feature.rate.title" = "用 5 星挑片";
+"intro.feature.rate.body" = "按空格键或点击星标按钮，为保留照片设置或取消 5 星。";
+"intro.feature.filter.title" = "聚焦保留照片";
+"intro.feature.filter.body" = "开启 5 星筛选，只查看已经选中的照片。";
+"intro.feature.export.title" = "导出收藏";
+"intro.feature.export.body" = "复制或移动 5 星照片，并同时处理对应的 XMP 附属文件。";
+"intro.feature.exif.title" = "查看 EXIF";
+"intro.feature.exif.body" = "打开信息面板，对比相机、镜头、ISO、快门和光圈信息。";
+"intro.skip" = "跳过";
+"intro.openButton" = "打开 RAW 文件";
+"intro.startButton" = "开始使用";
+
+"Camera" = "相机";
+"Lens" = "镜头";
+"ISO" = "ISO";
+"Shutter" = "快门";
+"Aperture" = "光圈";
+"Focal" = "焦距";
+
+"exif.focalLength" = "%@ mm";
+"exif.focalLengthWithFullFrameEquivalent" = "%@ mm（%@ mm）";
+
+"status.openPrompt" = "打开文件夹或 RAW 文件开始";
+"status.noSupportedRawFiles" = "未找到支持的 RAW 文件";
+"status.rawFilesLoaded" = "已载入 %d 个 RAW 文件";
+"status.rawFilesVisible" = "%d 个 RAW 文件";
+"status.favoriteRawFilesVisible" = "%d 个收藏 RAW 文件";
+"status.xmpWriteFailed" = "无法为 %@ 写入 XMP 评分";
+"status.exportFavoritesInProgress" = "正在导出 %d 个收藏 RAW 文件...";
+"status.exportFavoritesFailed" = "无法导出收藏 RAW 文件";
+"status.copyFavoritesCompleted" = "已复制 %d 个收藏 RAW 文件";
+"status.moveFavoritesCompleted" = "已移动 %d 个收藏 RAW 文件";
+"status.copyFavoritesCompletedWithFailures" = "已复制 %d 个收藏 RAW 文件，%d 个失败";
+"status.moveFavoritesCompletedWithFailures" = "已移动 %d 个收藏 RAW 文件，%d 个失败";

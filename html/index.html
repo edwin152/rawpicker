@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RawPicker 是一个面向 macOS 的 RAW 照片快速浏览与初筛工具。">
+  <title>RawPicker - macOS RAW 照片快速浏览与初筛工具</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7f5;
+      --text: #181c20;
+      --muted: #5a636b;
+      --panel: #ffffff;
+      --panel-strong: #edf5f2;
+      --border: #d7ddd8;
+      --accent: #0f766e;
+      --accent-strong: #0b4f4a;
+      --amber: #d99a21;
+      --shadow: 0 18px 50px rgba(22, 28, 32, 0.12);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141716;
+        --text: #f2f4f3;
+        --muted: #b8bfbb;
+        --panel: #202421;
+        --panel-strong: #18332f;
+        --border: #343b36;
+        --accent: #5ed7cb;
+        --accent-strong: #9ee7df;
+        --amber: #efbd5a;
+        --shadow: none;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      align-items: center;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      left: 0;
+      padding: 14px max(20px, calc((100vw - 1120px) / 2));
+      position: sticky;
+      right: 0;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      align-items: center;
+      display: inline-flex;
+      font-size: 17px;
+      font-weight: 750;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand img {
+      border-radius: 8px;
+      height: 34px;
+      width: 34px;
+    }
+
+    nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 14px;
+      gap: 18px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: calc(100svh - 64px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--panel-strong) 78%, transparent), transparent 58%),
+        linear-gradient(180deg, transparent, var(--bg) 94%);
+      content: "";
+      inset: 0;
+      position: absolute;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 44px;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+      margin: 0 auto;
+      max-width: 1120px;
+      min-height: calc(100svh - 64px);
+      padding: 74px 20px 86px;
+      place-items: center;
+      position: relative;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 780;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7.4vw, 88px);
+      letter-spacing: 0;
+      line-height: 0.98;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(18px, 2.1vw, 23px);
+      margin: 0 0 30px;
+      max-width: 610px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: inline-flex;
+      font-weight: 750;
+      gap: 10px;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .button.secondary {
+      background: color-mix(in srgb, var(--panel) 82%, transparent);
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .visual {
+      align-items: center;
+      display: grid;
+      justify-items: center;
+      width: 100%;
+    }
+
+    .app-icon {
+      filter: drop-shadow(0 26px 44px rgba(15, 118, 110, 0.28));
+      height: clamp(178px, 27vw, 330px);
+      width: clamp(178px, 27vw, 330px);
+    }
+
+    .workflow {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-top: 32px;
+      overflow: hidden;
+      width: min(100%, 420px);
+    }
+
+    .workflow-bar {
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px;
+    }
+
+    .dot {
+      background: var(--muted);
+      border-radius: 999px;
+      height: 10px;
+      opacity: 0.42;
+      width: 10px;
+    }
+
+    .workflow-body {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .preview {
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(140deg, color-mix(in srgb, var(--accent) 38%, transparent), transparent 54%),
+        linear-gradient(35deg, color-mix(in srgb, var(--amber) 34%, transparent), transparent 42%),
+        #1f2529;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .preview::after {
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 6px;
+      color: #ffffff;
+      content: "RAW";
+      font-size: 14px;
+      font-weight: 800;
+      left: 16px;
+      padding: 4px 8px;
+      position: absolute;
+      top: 16px;
+    }
+
+    .thumbs {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .thumb {
+      aspect-ratio: 1;
+      background: color-mix(in srgb, var(--accent) 16%, var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .thumb:nth-child(2n) {
+      background: color-mix(in srgb, var(--amber) 18%, var(--panel));
+    }
+
+    .section {
+      margin: 0 auto;
+      max-width: 1120px;
+      padding: 86px 20px;
+    }
+
+    .section h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: 0;
+      line-height: 1.08;
+      margin: 0 0 18px;
+      max-width: 760px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 34px;
+      max-width: 760px;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+    }
+
+    .feature-card h3 {
+      font-size: 19px;
+      margin: 0 0 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .step {
+      border-top: 3px solid var(--accent);
+      padding-top: 14px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .download-band {
+      background: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    .download-band .section {
+      align-items: center;
+      display: flex;
+      gap: 28px;
+      justify-content: space-between;
+      padding-bottom: 64px;
+      padding-top: 64px;
+    }
+
+    .download-band h2 {
+      margin-bottom: 10px;
+    }
+
+    .download-band p {
+      color: rgba(255, 255, 255, 0.78);
+      margin: 0;
+      max-width: 720px;
+    }
+
+    .download-band .button {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #0b4f4a;
+      flex: 0 0 auto;
+    }
+
+    .download-actions {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+      min-width: min(100%, 360px);
+    }
+
+    .download-card {
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 8px;
+      color: #111417;
+      display: flex;
+      gap: 14px;
+      min-height: 64px;
+      padding: 12px 16px;
+      width: 100%;
+    }
+
+    .download-card:hover {
+      transform: translateY(-1px);
+    }
+
+    .download-card strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .download-card small {
+      color: #5d666f;
+      display: block;
+      font-size: 13px;
+      line-height: 1.35;
+      margin-top: 3px;
+    }
+
+    .download-icon {
+      height: 28px;
+      width: 28px;
+    }
+
+    .app-store-card {
+      background: #050505;
+      border-color: #050505;
+      justify-content: center;
+      min-height: 68px;
+    }
+
+    .app-store-badge {
+      display: block;
+      height: 42px;
+      width: auto;
+    }
+
+    footer {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 1120px;
+      padding: 30px 20px 42px;
+    }
+
+    footer a {
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    @media (max-width: 860px) {
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 46px;
+      }
+
+      .visual {
+        order: -1;
+      }
+
+      .workflow {
+        display: none;
+      }
+
+      .feature-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .download-band .section {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .download-actions {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .actions,
+      .button {
+        width: 100%;
+      }
+
+      .section {
+        padding: 64px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="RawPicker 首页">
+      <img src="icon.png" alt="">
+      <span>RawPicker</span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="#features">功能</a>
+      <a href="#workflow">流程</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="https://github.com/edwin152/rawpicker.git">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="kicker">macOS RAW culling app</p>
+          <h1>RawPicker</h1>
+          <p class="lead">为 RAW 照片初筛而做的轻量工具：打开一组照片，快速浏览，标记 5 星，筛选保留，再把选中的文件导出。</p>
+          <div class="actions">
+            <a class="button primary" href="https://apps.apple.com/app/id6762542896?mt=12" aria-label="前往 App Store 下载 RawPicker">App Store 下载</a>
+            <a class="button secondary" href="#download">源码仓库</a>
+            <a class="button secondary" href="#features">查看功能</a>
+          </div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <img class="app-icon" src="icon.png" alt="">
+          <div class="workflow">
+            <div class="workflow-bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="workflow-body">
+              <div class="preview"></div>
+              <div class="thumbs">
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+                <span class="thumb"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>只保留挑片需要的动作</h2>
+      <p class="section-intro">RawPicker 专注本地 RAW 浏览、评分和导出，不把照片上传到服务器，也不在工作流里塞进多余步骤。</p>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>快速打开</h3>
+          <p>打开 RAW 文件或整个文件夹，也可以直接把文件拖进窗口。</p>
+        </article>
+        <article class="feature-card">
+          <h3>键盘浏览</h3>
+          <p>缩略图条、预览缓存和方向键导航，让第一轮筛选保持连贯。</p>
+        </article>
+        <article class="feature-card">
+          <h3>XMP 评分</h3>
+          <p>用 5 星标记保留照片，评分写入同名 <code>.xmp</code> 附属文件。</p>
+        </article>
+        <article class="feature-card">
+          <h3>只看保留</h3>
+          <p>一键筛选 5 星照片，再复制或移动照片及对应 XMP 文件。</p>
+        </article>
+        <article class="feature-card">
+          <h3>EXIF 信息</h3>
+          <p>查看相机、镜头、ISO、快门、光圈、焦距等关键元数据。</p>
+        </article>
+        <article class="feature-card">
+          <h3>本地优先</h3>
+          <p>照片、评分和上次会话信息保存在你的 Mac 与你选择的文件夹中。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <h2>从导入到导出，一条短路径</h2>
+      <p class="section-intro">适合拍摄后第一轮粗选：先把明显要保留的照片挑出来，再交给后续修图工具继续处理。</p>
+      <div class="steps">
+        <div class="step">
+          <strong>1. 打开</strong>
+          <p>选择 RAW 文件、文件夹，或直接拖放到窗口。</p>
+        </div>
+        <div class="step">
+          <strong>2. 浏览</strong>
+          <p>用方向键、缩略图和适应窗口视图快速检查画面。</p>
+        </div>
+        <div class="step">
+          <strong>3. 标记</strong>
+          <p>用空格把保留照片设为 5 星，评分写入 XMP。</p>
+        </div>
+        <div class="step">
+          <strong>4. 导出</strong>
+          <p>只看 5 星照片，并复制或移动到目标文件夹。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-band" id="download">
+      <div class="section">
+        <div>
+          <h2>获取 RawPicker</h2>
+          <p>优先从 App Store 获取应用，也可以从 GitHub 或 Gitee 仓库查看源码、发布信息或参与贡献。</p>
+        </div>
+        <div class="download-actions">
+          <a class="download-card app-store-card" href="https://apps.apple.com/app/id6762542896?mt=12" aria-label="从 App Store 下载 RawPicker">
+            <img class="app-store-badge" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+          </a>
+          <a class="download-card" href="https://github.com/edwin152/rawpicker.git" aria-label="前往 RawPicker GitHub 仓库">
+            <img class="download-icon" src="https://cdn.simpleicons.org/github/181717" alt="">
+            <span>
+              <strong>GitHub</strong>
+              <small>源码、发布信息与贡献入口</small>
+            </span>
+          </a>
+          <a class="download-card" href="https://gitee.com/edwin152/rawpicker" aria-label="前往 RawPicker Gitee 仓库">
+            <img class="download-icon" src="https://cdn.simpleicons.org/gitee/C71D23" alt="">
+            <span>
+              <strong>Gitee</strong>
+              <small>国内访问更顺畅的源码镜像</small>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 RawPicker · 沪ICP备2021013727号-1</span>
+    <span>
+      <a href="privacy.html">隐私政策</a>
+      ·
+      <a href="privacy.en.html">Privacy Policy</a>
+    </span>
+  </footer>
+</body>
+</html>

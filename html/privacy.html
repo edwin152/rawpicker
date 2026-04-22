@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RawPicker 隐私政策</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f4;
+      --text: #1f2328;
+      --muted: #5f6672;
+      --panel: #ffffff;
+      --border: #d8d8d2;
+      --accent: #0f766e;
+      --accent-soft: #e3f3f0;
+      --shadow: 0 16px 40px rgba(31, 35, 40, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151716;
+        --text: #f1f3f2;
+        --muted: #b8bfbb;
+        --panel: #202321;
+        --border: #343a36;
+        --accent: #4fd1c5;
+        --accent-soft: #153f3b;
+        --shadow: none;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.75;
+    }
+
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.12;
+      margin: 0 0 16px;
+    }
+
+    .summary {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .language-switch {
+      margin: 18px 0 0;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 28px;
+    }
+
+    h2 {
+      font-size: 22px;
+      line-height: 1.35;
+      margin: 0 0 12px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    p:last-child,
+    ul:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 0 0 14px;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    code {
+      background: var(--accent-soft);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+      padding: 0.12em 0.35em;
+    }
+
+    .meta {
+      background: var(--accent-soft);
+      border-radius: 8px;
+      color: var(--text);
+      margin: 0 0 28px;
+      padding: 14px 16px;
+    }
+
+    .meta p {
+      margin: 0;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 650;
+      text-underline-offset: 3px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        width: min(100% - 24px, 920px);
+        padding: 32px 0;
+      }
+
+      article {
+        padding: 24px 18px;
+      }
+
+      .summary {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">RawPicker</p>
+      <h1>隐私政策</h1>
+      <p class="summary">
+        RawPicker 是一个本地运行的 macOS RAW 照片浏览与初筛工具。我们尽量让它只处理完成挑片所必需的数据，并把这些数据留在你的设备和你选择的文件夹中。
+      </p>
+      <p class="language-switch"><a href="index.html">首页</a> · <a href="privacy.en.html">English</a></p>
+    </header>
+
+    <article>
+      <div class="meta">
+        <p><strong>生效日期：</strong>2026 年 4 月 22 日</p>
+      </div>
+
+      <section>
+        <h2>一、我们收集什么信息</h2>
+        <p>RawPicker 不要求注册账号，不内置广告、统计 SDK 或第三方跟踪工具。</p>
+        <p>在你使用应用时，RawPicker 会在本机处理以下与功能相关的信息：</p>
+        <ul>
+          <li>你主动打开、拖入或导出的 RAW 文件、文件夹以及同名 <code>.xmp</code> 附属文件。</li>
+          <li>照片文件中已有的元数据，例如相机、镜头、ISO、快门、光圈、焦距等 EXIF 信息。</li>
+          <li>你在应用内设置的评分，例如将照片标记为 5 星或重置评分。</li>
+          <li>为了恢复上次会话而保存在本机的文件路径、文件夹路径、安全作用域书签和当前选中项。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>二、我们如何使用这些信息</h2>
+        <p>这些信息只用于提供 RawPicker 的核心功能，包括：</p>
+        <ul>
+          <li>加载和预览你选择的 RAW 照片。</li>
+          <li>显示缩略图、EXIF 信息和当前评分。</li>
+          <li>把评分写入照片旁边的同名 <code>.xmp</code> 文件。</li>
+          <li>筛选 5 星照片，并按你的操作复制或移动照片及对应 <code>.xmp</code> 文件。</li>
+          <li>在下次启动时恢复上次打开的来源和选中的照片。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>三、数据保存在哪里</h2>
+        <p>RawPicker 处理的数据默认保存在你的 Mac 本地，具体包括：</p>
+        <ul>
+          <li>评分会写入照片所在位置旁边的同名 <code>.xmp</code> 文件。</li>
+          <li>导出的照片会保存到你选择的目标文件夹。</li>
+          <li>上次会话信息会通过 macOS 的 <code>UserDefaults</code> 保存在本机，键名为 <code>RawPicker.LastSession</code>。</li>
+        </ul>
+        <p>RawPicker 不会把你的照片、EXIF、评分、文件路径或会话信息上传到开发者服务器。</p>
+      </section>
+
+      <section>
+        <h2>四、网络与第三方服务</h2>
+        <p>当前版本的 RawPicker 不需要联网即可完成主要功能，也不会主动向第三方服务发送你的照片或使用数据。</p>
+        <p>如果你通过 GitHub、应用商店、浏览器或其他平台下载、反馈问题或查看项目页面，这些平台可能会按照它们自己的隐私政策处理相关数据。</p>
+      </section>
+
+      <section>
+        <h2>五、文件访问权限</h2>
+        <p>RawPicker 只会访问你通过打开面板、拖放或导出流程明确选择的文件和文件夹。macOS 可能会为这些位置授予安全作用域访问权限，以便应用在当前或后续会话中继续读取你选择的内容。</p>
+        <p>你可以通过移动文件、删除相关 <code>.xmp</code> 文件、清除应用数据或卸载应用来移除本机保存的数据。</p>
+      </section>
+
+      <section>
+        <h2>六、数据共享</h2>
+        <p>RawPicker 不出售、出租或共享你的个人信息。除非你主动把照片、导出文件、日志、截图或问题描述发送给他人，否则项目维护者不会获得这些内容。</p>
+        <p>如果你提交问题反馈，请避免公开上传包含敏感信息的照片、EXIF、文件路径或截图。</p>
+      </section>
+
+      <section>
+        <h2>七、儿童隐私</h2>
+        <p>RawPicker 面向一般照片管理场景，不专门面向儿童，也不会有意收集儿童个人信息。</p>
+      </section>
+
+      <section>
+        <h2>八、政策更新</h2>
+        <p>如果 RawPicker 的数据处理方式发生变化，我们可能会更新本隐私政策，并在页面顶部调整生效日期。重大变化会尽量在项目发布说明或仓库页面中说明。</p>
+      </section>
+
+      <section>
+        <h2>九、联系我们</h2>
+        <p>如果你对本隐私政策或 RawPicker 的数据处理方式有疑问，可以通过项目仓库提交 Issue。若问题涉及安全或敏感信息，请优先使用 GitHub Security Advisories 私密报告。</p>
+      </section>
+    </article>
+
+    <footer>
+      <p>© 2026 RawPicker. 沪ICP备2021013727号-1。本页面仅说明 RawPicker 当前版本的隐私实践。</p>
+    </footer>
+  </main>
+</body>
+</html>

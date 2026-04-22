@@ -1,0 +1,61 @@
+"Open..." = "Open...";
+"Close Project" = "Close Project";
+"Viewer" = "Viewer";
+"Previous" = "Previous";
+"Next" = "Next";
+"Set 5 Stars / Reset Rating" = "Set 5 Stars / Reset Rating";
+"Fit / 100%" = "Fit / 100%";
+"Zoom In" = "Zoom In";
+"Zoom Out" = "Zoom Out";
+"Toggle EXIF" = "Toggle EXIF";
+"Export" = "Export";
+"Export favorites" = "Export favorites";
+"Copy favorites" = "Copy favorites";
+"Move favorites" = "Move favorites";
+"Cancel" = "Cancel";
+"Choose how to export all 5-star photos and their XMP sidecars." = "Choose how to export all 5-star photos and their XMP sidecars.";
+
+"Open RAW files or a folder" = "Open RAW files or a folder";
+"Open" = "Open";
+"Drop RAW files or folders" = "Drop RAW files or folders";
+"Set 5 stars / reset rating" = "Set 5 stars / reset rating";
+"Show 5-star photos only" = "Show 5-star photos only";
+
+"intro.title" = "Welcome to Raw Picker";
+"intro.subtitle" = "A quick tour before you start culling RAW photos.";
+"intro.feature.open.title" = "Open or drop files";
+"intro.feature.open.body" = "Load a folder or drag RAW files into the window to begin.";
+"intro.feature.rate.title" = "Pick with 5 stars";
+"intro.feature.rate.body" = "Press Space or use the star button to mark and unmark keepers.";
+"intro.feature.filter.title" = "Focus on keepers";
+"intro.feature.filter.body" = "Switch to the 5-star filter when you only want to review selected photos.";
+"intro.feature.export.title" = "Export favorites";
+"intro.feature.export.body" = "Copy or move 5-star photos together with their XMP sidecars.";
+"intro.feature.exif.title" = "Check EXIF";
+"intro.feature.exif.body" = "Open the info panel to compare camera, lens, ISO, shutter, and aperture details.";
+"intro.skip" = "Skip";
+"intro.openButton" = "Open RAW files";
+"intro.startButton" = "Start";
+
+"Camera" = "Camera";
+"Lens" = "Lens";
+"ISO" = "ISO";
+"Shutter" = "Shutter";
+"Aperture" = "Aperture";
+"Focal" = "Focal";
+
+"exif.focalLength" = "%@ mm";
+"exif.focalLengthWithFullFrameEquivalent" = "%@ mm (%@ mm full-frame eq.)";
+
+"status.openPrompt" = "Open a folder or RAW files to begin";
+"status.noSupportedRawFiles" = "No supported RAW files found";
+"status.rawFilesLoaded" = "%d RAW files loaded";
+"status.rawFilesVisible" = "%d RAW files";
+"status.favoriteRawFilesVisible" = "%d favorite RAW files";
+"status.xmpWriteFailed" = "Could not write XMP rating for %@";
+"status.exportFavoritesInProgress" = "Exporting %d favorite RAW files...";
+"status.exportFavoritesFailed" = "Could not export favorite RAW files";
+"status.copyFavoritesCompleted" = "Copied %d favorite RAW files";
+"status.moveFavoritesCompleted" = "Moved %d favorite RAW files";
+"status.copyFavoritesCompletedWithFailures" = "Copied %d favorite RAW files, %d failed";
+"status.moveFavoritesCompletedWithFailures" = "Moved %d favorite RAW files, %d failed";

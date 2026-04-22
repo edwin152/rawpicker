@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RawPicker Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f4;
+      --text: #1f2328;
+      --muted: #5f6672;
+      --panel: #ffffff;
+      --border: #d8d8d2;
+      --accent: #0f766e;
+      --accent-soft: #e3f3f0;
+      --shadow: 0 16px 40px rgba(31, 35, 40, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151716;
+        --text: #f1f3f2;
+        --muted: #b8bfbb;
+        --panel: #202321;
+        --border: #343a36;
+        --accent: #4fd1c5;
+        --accent-soft: #153f3b;
+        --shadow: none;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+        "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.75;
+    }
+
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.12;
+      margin: 0 0 16px;
+    }
+
+    .summary {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .language-switch {
+      margin: 18px 0 0;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 28px;
+    }
+
+    h2 {
+      font-size: 22px;
+      line-height: 1.35;
+      margin: 0 0 12px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    p:last-child,
+    ul:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 0 0 14px;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    code {
+      background: var(--accent-soft);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+      padding: 0.12em 0.35em;
+    }
+
+    .meta {
+      background: var(--accent-soft);
+      border-radius: 8px;
+      color: var(--text);
+      margin: 0 0 28px;
+      padding: 14px 16px;
+    }
+
+    .meta p {
+      margin: 0;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 650;
+      text-underline-offset: 3px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        width: min(100% - 24px, 920px);
+        padding: 32px 0;
+      }
+
+      article {
+        padding: 24px 18px;
+      }
+
+      .summary {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">RawPicker</p>
+      <h1>Privacy Policy</h1>
+      <p class="summary">
+        RawPicker is a local macOS app for browsing and culling RAW photos. It is designed to process only the data needed for that workflow and to keep that data on your device and in the folders you choose.
+      </p>
+      <p class="language-switch"><a href="index.html">Home</a> · <a href="privacy.html">中文</a></p>
+    </header>
+
+    <article>
+      <div class="meta">
+        <p><strong>Effective date:</strong> April 22, 2026</p>
+      </div>
+
+      <section>
+        <h2>1. What Information We Collect</h2>
+        <p>RawPicker does not require an account and does not include advertising, analytics SDKs, or third-party tracking tools.</p>
+        <p>When you use the app, RawPicker processes the following information locally on your Mac:</p>
+        <ul>
+          <li>RAW files, folders, and matching <code>.xmp</code> sidecar files that you open, drag into the app, or export.</li>
+          <li>Metadata already present in photo files, such as camera, lens, ISO, shutter speed, aperture, focal length, and other EXIF information.</li>
+          <li>Ratings you set in the app, such as marking a photo as 5 stars or resetting its rating.</li>
+          <li>File paths, folder paths, security-scoped bookmarks, and the currently selected item saved locally so the app can restore your last session.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>2. How We Use This Information</h2>
+        <p>This information is used only to provide RawPicker's core features, including:</p>
+        <ul>
+          <li>Loading and previewing the RAW photos you choose.</li>
+          <li>Showing thumbnails, EXIF information, and current ratings.</li>
+          <li>Writing ratings to matching <code>.xmp</code> files next to your photos.</li>
+          <li>Filtering 5-star photos and copying or moving photos with their matching <code>.xmp</code> files when you ask the app to export them.</li>
+          <li>Restoring the sources and selected photo from your previous session when the app launches again.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Where Data Is Stored</h2>
+        <p>RawPicker stores and processes data on your Mac by default:</p>
+        <ul>
+          <li>Ratings are written to matching <code>.xmp</code> files next to the corresponding photos.</li>
+          <li>Exported photos are saved to the destination folder you choose.</li>
+          <li>Last-session information is stored locally through macOS <code>UserDefaults</code> under the key <code>RawPicker.LastSession</code>.</li>
+        </ul>
+        <p>RawPicker does not upload your photos, EXIF information, ratings, file paths, or session information to developer servers.</p>
+      </section>
+
+      <section>
+        <h2>4. Network and Third-Party Services</h2>
+        <p>The current version of RawPicker does not need an internet connection for its main features and does not actively send your photos or usage data to third-party services.</p>
+        <p>If you download the app, submit feedback, or view the project page through GitHub, an app store, a browser, or another platform, those platforms may process related data under their own privacy policies.</p>
+      </section>
+
+      <section>
+        <h2>5. File Access Permissions</h2>
+        <p>RawPicker only accesses files and folders that you explicitly choose through the open panel, drag-and-drop, or export flow. macOS may grant security-scoped access for those locations so the app can continue reading selected content during the current or a later session.</p>
+        <p>You can remove locally saved data by moving files, deleting related <code>.xmp</code> files, clearing app data, or uninstalling the app.</p>
+      </section>
+
+      <section>
+        <h2>6. Data Sharing</h2>
+        <p>RawPicker does not sell, rent, or share your personal information. Project maintainers do not receive your photos, exported files, logs, screenshots, or issue details unless you choose to send them.</p>
+        <p>When filing feedback, avoid publicly uploading photos, EXIF data, file paths, or screenshots that contain sensitive information.</p>
+      </section>
+
+      <section>
+        <h2>7. Children's Privacy</h2>
+        <p>RawPicker is intended for general photo management workflows. It is not directed to children and does not knowingly collect children's personal information.</p>
+      </section>
+
+      <section>
+        <h2>8. Policy Updates</h2>
+        <p>If RawPicker's data handling changes, we may update this Privacy Policy and revise the effective date above. Material changes will be noted when practical in project release notes or on the repository page.</p>
+      </section>
+
+      <section>
+        <h2>9. Contact</h2>
+        <p>If you have questions about this Privacy Policy or how RawPicker handles data, you can open an Issue in the project repository. For security-sensitive or private reports, please use GitHub Security Advisories.</p>
+      </section>
+    </article>
+
+    <footer>
+      <p>© 2026 RawPicker. 沪ICP备2021013727号-1. This page describes the privacy practices of the current version of RawPicker.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest an improvement for RawPicker
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your idea. Clear problem statements help us evaluate quickly.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What user pain does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and impact
+      description: How this affects current behavior, UX, and compatibility

@@ -1,0 +1,60 @@
+name: Bug report
+description: Report a reproducible problem in RawPicker
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please provide enough detail to reproduce.
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: macOS version, hardware, and RawPicker version/commit
+      placeholder: macOS 14.5, Apple Silicon, commit abc123
+    validations:
+      required: true
+
+  - type: input
+    id: raw-format
+    attributes:
+      label: RAW format
+      description: Example RAF/DNG/CR3/NEF
+      placeholder: RAF
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: A minimal sequence to trigger the issue
+      placeholder: |
+        1. Open folder ...
+        2. Select image ...
+        3. Press ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Optional but helpful
